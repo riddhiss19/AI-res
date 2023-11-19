@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <!-- Title  -->
+    <title>ResumeAI</title>
+    <!-- Favicon -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,600,700" rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plugins.css') }}"/>
+    <!-- Main Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #27968c;">
+    <div class="container">
+           <h4>ResumeAI</h4>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <span class="nav-link"> <a style="text-decoration: none;" href="/home.html">Home</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="page-header valign bg-img" data-overlay-dark="7" data-background="{{ url_for('static', filename='assets/img/imagea.jpg') }}" data-stellar-background-ratio="0.5" style="height: 350px;">
+    <div class="container">
+        <div class="row">
+            <div class="full-width text-center caption mt-30">
+                <h1>Sign Up</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End Header -->
+<!-- Start Contacts -->
+<section class="page-contact section-padding">
+    <div class="container">
+        <div class="box-body">
+     	    {% with messages = get_flashed_messages() %}
+		    {% if messages %}
+		    {% for message in messages %}
+            <div class="alert alert-info alert-dismissible" role="alert" style="margin-left: 10px;margin-right: 10px;margin-top: 5px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span>
+                </button>
+                {{message}}
+            </div>
+            {% endfor %}
+		    {% endif %}
+		    {% endwith %}
+
+		    {% block body %}{% endblock %}
+            </div>
+        <div class="row">
+            <div class="offset-lg-1 col-lg-10">
+                <form class="form" id="contact-form" method="post" action="/post_user">
+                    <div class="messages"></div>
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input id="form_email" type="email" name="email" placeholder="Email" required="required" data-error="email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password"name="password" placeholder="Password" required="required" data-error="password is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="con_password" placeholder="Confirm Password" required="required" data-error="password confirmation is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="butn butn-bg" formaction="/post_user"><span>Submit</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='assets/js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery-migrate-3.0.0.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+<!-- Scroll JS -->
+<script src="{{ url_for('static', filename='assets/js/scrollIt.min.js') }}"></script>
+<!-- Owl Carousel JS -->
+<script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}"></script>
+<!-- Scripts JS -->
+<script src="{{ url_for('static', filename='assets/js/scripts.js') }}"></script>
+</body>
+
+</html>

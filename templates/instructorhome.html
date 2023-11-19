@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ResumeAI</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/adminlte.min.css') }}">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+         
+            <span class="logo-lg"> ResumeAI</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+         
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ url_for('static', filename='img/avatar.png') }}" class="user-image"
+                                 alt="User Image">
+                            <span class="hidden-xs">User</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="{{ url_for('static', filename='img/avatar.png') }}" class="img-circle"
+                                     alt="User Image">
+
+                                <p>
+                                    [TPO]
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div style=" margin-left: 35%;">
+                                    <a href="/logout" class="btn btn-default btn-flat">Log out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ url_for('static', filename='img/avatar.png') }}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>TPO</p>
+                    <a href="#">Admin</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                
+                <li class="active">
+                    <a href="/instructorhome.html">
+                        <i class="fa fa-home"></i> <span>Add Company</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="/instmanagestudent">
+                        <i class="fa fa-users"></i> <span>Manage Applicant</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+        </section>
+       
+        <section class="content">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-11" style="float: none;margin: 0 auto;">
+      
+      
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Add Company</h3> 
+                  </div>
+                  <!-- /.box-header -->
+      
+      
+                  <form role="form" method="post" name="form1" id="form1" action="/add_company" enctype="multipart/form-data">
+                    <div class="box-body">
+                      <div class="row">
+                        <div class="col-md-9">
+                          <div class="form-group row">
+                            <input type="hidden" name="id">
+                            <div class="col-md-3"><label>Company Name:</label></div>
+                            <div class="col-md-9"><input name="frst_name" class="form-control" type="text" ></div>
+                          </div>     
+                          <div class="form-group row">
+                            <div class="col-md-3"><label>Job Title:</label></div>
+                            <div class="col-md-9"> 
+                                <select name="job_title" id="job_title">
+                                    <option value="web">Web Developer</option>
+                                    <option value="ai">AI Developer</option>
+                                    <option value="swd">Software Developer</option>
+                                  </select>
+                            </div>
+                          </div>      
+                          <div class="form-group row">
+                            <div class="col-md-3"><label>Job Description:</label></div>
+                            <div class="col-md-9"><textarea class="form-control" name="job_dsc"> </textarea></div>
+                          </div>     
+                          <div class="form-group row">
+                            <div class="col-md-3"><label>Salary:</label></div>
+                            <div class="col-md-9"><input class="form-control" name="salary" /></div>
+                          </div>  
+                          <div class="form-group row">
+                            <div class="col-md-3"><label>Required Skills:</label></div>
+                            <div class="col-md-9"><textarea class="form-control" name="skills"> </textarea></div>
+                          </div>     
+                        </div>
+                          
+                        </div>  
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right" formaction="/add_company">Submit</button>
+                          </div>
+                        <!-- /.col-md-6 -->                
+                      </div>
+                      <!-- /.row -->
+      
+      
+                    </div>
+                    <!-- /.box-body -->
+      
+                    
+                  </form>
+                    
+                </div>
+                <!-- /.box -->
+      
+      
+              </div>
+              <!--/.col (left) -->
+            </div>
+            <!-- /.row -->
+          </section>
+        
+    </div>
+    <!-- /.content-wrapper -->
+   
+
+
+</div>
+<!-- ./wrapper -->
+
+<script src="{{ url_for('static', filename='dist/adminlte.min.js') }}"></script>
+
+</body>
+
+</html>

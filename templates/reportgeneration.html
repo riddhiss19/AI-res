@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ResumeAI</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/adminlte.min.css') }}">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">
+          <b>UL</b>E</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">
+          ResumeAI</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ url_for('static', filename='img/avatar.png') }}" class="user-image"
+                                 alt="User Image">
+                            <span class="hidden-xs">User</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="{{ url_for('static', filename='img/avatar.png') }}" class="img-circle"
+                                     alt="User Image">
+
+                                <p>
+                                    [User]
+                                    <small>Applicant</small>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div style=" margin-left: 35%;">
+                                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                              </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{{ url_for('static', filename='img/avatar.png') }}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>User</p>
+                    <a href="#">
+                       Applicant</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+               
+                  <li>
+                    <a href="/viewprofile">
+                      <i class="fa fa-user"></i> <span>Profile</span>
+                    </a>
+                  </li>
+                 
+                  <li class="active">
+                    <a href="/reportgeneration">
+                      <i class="fa fa-book"></i> <span>Report</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/resCompare">
+                      <i class="fa fa-check-square-o"></i> <span>Match Resume</span>
+                    </a>
+                  </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Home</h3>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-info alert-dismissible" role="alert"
+                                 style="margin-left: 10px;margin-right: 10px;margin-top: 5px;">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">×</span>
+                                </button>
+                                {{message}}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                            {% block body %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {%for row in data%}
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 control-label">Full Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="fname" value=" {{row[0]}} {{row[1]}} "
+                                                   class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 control-label">Preffered Role</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="cname" value="{{row[2]}}"
+                                                   class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="col-md-6">
+                                    <label> Resume Analysis</label>
+                
+                                            <p>Click <a href="/cvreport.html">Here</a> to view your CV results.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endblock %}
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+
+        <!-- /.content -->
+    </div>
+  
+
+
+</div>
+<!-- ./wrapper -->
+
+<script src="{{ url_for('static', filename='dist/adminlte.min.js') }}"></script>
+
+</body>
+
+</html>
